@@ -1,0 +1,126 @@
+.menu-wrap{
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+
+}
+.toggle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    z-index: 2;
+    opacity: 0;
+}
+
+.hambuger{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 60px;
+    padding: 1rem;
+    z-index: 1;
+    background-color: var(--primary-color);
+}
+
+.hambuger > div{
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+} 
+
+.hambuger > div::before,
+.hambuger > div::after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background: white;
+    z-index: 2;
+}
+.hambuger > div::after{
+    top: 10px;
+    width: 100%;
+}
+
+.toggle:checked + .hambuger >div{
+    transform: rotate(140deg);
+}
+.toggle:checked + .hambuger >div::before,
+.toggle:checked + .hambuger >div::after{
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.toggle:checked:hover + .hambuger >div{
+    transform: rotate(225deg);
+}
+
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu > div{
+    background-color: var(--overlay-color);
+    border-radius: 50%;
+    width: 200vw;
+    height: 200vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.5s ease-in;
+}
+
+.menu > div >div{
+    text-align: center;
+    max-height: 100vh;
+    max-width: 90vw;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+}
+
+.menu > div >div ul li{
+    list-style: none;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.menu > div >div ul li a{
+    text-decoration: none;
+    color: coral;
+    
+}
+
+  .toggle:checked ~ .menu{
+      visibility: visible;
+  }
+.toggle:checked ~ .menu >div{
+    transform: scale(1)
+}
+
+.toggle:checked ~ .menu > div > div{
+    opacity: 1;
+}
+
+
+
